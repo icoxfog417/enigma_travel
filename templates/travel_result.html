@@ -8,22 +8,14 @@
 {% end %}
 
 {% block content %}
-<div class="page-header">
-    <h1>Enigma Travel</h1>
-</div>
-
-<div id="guide" class="container">
-    <div class="row">
-        <div class="description col-md-5">
-            <div class="form-inline" >
-                {% raw xsrf_form_html() %}
-                <button class="btn btn-default" v-on="click:createTravel">旅に出る</button>
-            </div>
-        </div>
+<div class="container">
+    <h1>Travel Result</h1>
+    <div>
+        <a href="{{ result.url }}" target="_blank">{{ result.title }}</a><br/>
+        <img src="{{ result.image_url }}"/>
     </div>
 </div>
 {% end %}
 
 {% block tail_script %}
-<script src="/static/js/index.js"></script>
 {% end %}

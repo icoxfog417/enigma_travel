@@ -10,6 +10,14 @@
 {% block content %}
 <div class="container">
     <h1>Training</h1>
+    <input id="deadline" type="hidden" value="{{ deadline }}">
+    <div>
+        <img id="travel" src="" data-travel_id=""/>
+        {% raw xsrf_form_html() %}
+        <button id="like" class="btn btn-default" >Like</button>
+        <button id="dislike" class="btn btn-default" >Dislike</button>
+    </div>
+    <button id="decide" class="btn btn-primary" >Decide</button>
 </div>
 {% end %}
 

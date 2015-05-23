@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from models.travel_model import Travel
 
 
 class UBICApi:
@@ -19,12 +20,19 @@ class UBICApi:
         :param travel_feedbacks:
         :return:
         """
-        pass
+        return True
 
     def predict(self, group_id):
         """
-        グループに対して、スコアの高いプランを返す
+        グループにおける旅行プランのリスト(スコアで降順ソート)を返す
         :param group_id:
         :return:
         """
-        pass
+        candidates = [Travel(
+            "1",
+            "Sample Travel",
+            "http://www.jtb.co.jp/kokunai/pkg/tourdetail.aspx?tourcd=13KZ000751AA01000000&dept=TYO&brand=tourdom&SearchType=standard&TourConFlg=NX&TransType=1",
+            "http://dom.jtb.co.jp/yado/photo2/LL/8/8715015/87150151000065600.jpg",
+            10000
+        )]
+        return candidates

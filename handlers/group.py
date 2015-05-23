@@ -21,17 +21,17 @@ class GroupHandler(tornado.web.RequestHandler):
 
         # 旅行プランのフィルタ条件を作成
         rank = self.get_argument("rank", 0)
-        money = 10000
+        budget = 10000
         if rank == 1:
-            money = 30000
+            budget = 30000
         elif rank == 2:
-            money = 80000
+            budget = 80000
 
         _deadline = datetime.now() + timedelta(minutes=3)
         deadline = _deadline.strftime("%Y/%m/%d %H:%M:%S")
 
         _query = {
-            "money": money,
+            "budget": budget,
             "deadline": deadline
         }
         query = parse.urlencode(_query)

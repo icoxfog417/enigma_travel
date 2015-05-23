@@ -13,9 +13,13 @@
 </div>
 
 <div class="container">
-    <div class="form-inline" >
+    <div id="group" class="form-inline" >
         {% raw xsrf_form_html() %}
-        <button class="btn btn-default" >旅に出る</button>
+        <button id="submit" class="btn btn-default" >旅に出る</button>
+        <br/>
+        <div id="share" style="display:none">
+            <a id="url" href="">投票</a>
+        </div>
     </div>
 </div>
 {% end %}

@@ -1,0 +1,12 @@
+{
+  "name": "Enigma Travel",
+  "description": "Go travel by one click",
+  "repository": "https://github.com/icoxfog417/enigma_travel.git",
+  "keywords": ["python", "websocket", "tornado"],
+  "env": {
+    "SECRET_TOKEN": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    }
+  }
+}

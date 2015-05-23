@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+import uuid
+from datetime import datetime, timedelta
+import urllib.parse as parse
 import tornado.web
 
 
@@ -13,11 +16,27 @@ class GroupHandler(tornado.web.RequestHandler):
         グループURLの作成
         :return:
         """
-        # create group id and make unique url for travel
-        group_id = "xxx"
-        response = {}
+        # 一意のグループIDを作成
+        group_id = str(uuid.uuid4())
 
-        url = '//{0}/travel/{1}'.format(self.request.host, group_id)
-        response = {"group_id": group_id, "url": url}
+        # 旅行プランのフィルタ条件を作成
+        rank = self.get_argument("rank", 0)
+        money = 10000
+        if rank == 1:
+            money = 30000
+        elif rank == 2:
+            money = 80000
 
+        _deadline = datetime.now() + timedelta(minutes=3)
+        deadline = _deadline.strftime("%Y/%m/%d %H:%M:%S")
+
+        _query = {
+            "money": money,
+            "deadline": deadline
+        }
+        query = parse.urlencode(_query)
+
+        # urlの作成
+        url = '//{0}/travel/{1}?{2}'.format(self.request.host, group_id, query)
+        response = {"url": url}
         return self.write(response)

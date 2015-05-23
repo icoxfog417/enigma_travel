@@ -12,10 +12,14 @@
     <h1>Enigma Travel</h1>
 </div>
 
-<div class="container">
-    <div class="form-inline" >
-        {% raw xsrf_form_html() %}
-        <button class="btn btn-default" >旅に出る</button>
+<div id="guide" class="container">
+    <div class="row">
+        <div class="description col-md-5">
+            <div class="form-inline" >
+                {% raw xsrf_form_html() %}
+                <button class="btn btn-default" v-on="click:createTravel">旅に出る</button>
+            </div>
+        </div>
     </div>
 </div>
 {% end %}

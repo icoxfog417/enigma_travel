@@ -3,7 +3,7 @@ import tornado.ioloop
 import tornado.options
 import tornado.web
 import os.path
-from handlers import GroupHandler
+from handlers import GroupHandler, TravelHandler, TrainingHandler, TravelResultHandler
 
 
 class Application(tornado.web.Application):
@@ -11,7 +11,10 @@ class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
             (r"/", IndexHandler),
-            (r"/group", GroupHandler)
+            (r"/group", GroupHandler),
+            (r"/travel/([^/]+)", TravelHandler),
+            (r"/travel/([^/]+)/train", TrainingHandler),
+            (r"/travel/([^/]+)/result", TravelResultHandler),
         ]
         settings = dict(
             cookie_secret=os.environ.get("SECRET_TOKEN", "__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__"),

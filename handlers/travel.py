@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import tornado.web
 from models.travel_model import Travel
+from service.db import Db
+import json
 
 
 class TravelHandler(tornado.web.RequestHandler):
@@ -24,11 +26,16 @@ class TrainingHandler(tornado.web.RequestHandler):
         :param group_key:
         :return:
         """
+
+        db = Db()
+        result = db.execute("select * from travels order by RANDOM() limit 1")
+        travel_json = json.loads(result[5])
+
         t = Travel(
-            "1",
-            "Sample Travel",
-            "http://www.jtb.co.jp/kokunai/pkg/tourdetail.aspx?tourcd=13KZ000751AA01000000&dept=TYO&brand=tourdom&SearchType=standard&TourConFlg=NX&TransType=1",
-            "http://dom.jtb.co.jp/yado/photo2/LL/8/8715015/87150151000065600.jpg",
+            result[0],
+            result[2],
+            travel_json["urls"]["mobile"],
+            travel_json["img"][0]["l"],
             10000
         )
         self.write(t.to_dict())

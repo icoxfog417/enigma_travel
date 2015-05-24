@@ -17,7 +17,7 @@ class GroupHandler(tornado.web.RequestHandler):
         :return:
         """
         # 一意のグループIDを作成
-        group_id = uuid.uuid4().int & (1<<32)-1
+        group_id = uuid.uuid4().int & (1<<16)-1
 
         # 旅行プランのフィルタ条件を作成
         budget = int(self.get_argument("budget", "0"))

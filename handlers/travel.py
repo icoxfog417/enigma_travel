@@ -27,8 +27,16 @@ class TrainingHandler(tornado.web.RequestHandler):
         :return:
         """
 
+        _budget = int(self.get_argument("budget", default=0))
+        if  _budget == 0:
+            budget = 50000
+        elif _budget == 1:
+            budget = 100000
+        elif _budget == 2:
+            budget = 150000
+
         db = Db()
-        result = db.select("select * from travels order by RANDOM() limit 1")
+        result = db.select("select * from travels where price_max <= {0} order by RANDOM() limit 1".format(budget))
         travel_json = json.loads(result[5])
 
         t = Travel(

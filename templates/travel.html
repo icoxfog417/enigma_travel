@@ -40,13 +40,11 @@
     <div style="width:100%">
         <div style="width:400px; margin:auto">
             <button id="dislike" class="btn btn-default vote" style="float:left"><i class="fa fa-thumbs-down"></i></button>
-            <button id="like" class="btn btn-default vote"  style="float:right"><i class="fa fa-thumbs-o-up"></i></button>
+            <button id="like" class="btn btn-success vote"  style="float:right"><i class="fa fa-thumbs-o-up"></i></button>
             <br style="clear:both"/>
         </div>
         {% raw xsrf_form_html() %}
     </div>
-    <br/>
-    <button id="decide" class="btn btn-primary" >Decide</button>
 </div>
 {% end %}
 

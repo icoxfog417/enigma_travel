@@ -20,13 +20,7 @@ class GroupHandler(tornado.web.RequestHandler):
         group_id = uuid.uuid4().int & (1<<64)-1
 
         # 旅行プランのフィルタ条件を作成
-        _budget = int(self.get_argument("budget", "0"))
-        budget = 10000
-        if _budget == 1:
-            budget = 30000
-        elif _budget == 2:
-            budget = 80000
-
+        budget = int(self.get_argument("budget", "0"))
         deadline = self.get_argument("deadline", "1111/11/11 11:11:11")
 
         _query = {

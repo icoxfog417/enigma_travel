@@ -1,6 +1,21 @@
 {% extends "base.html" %}
 
 {% block style_block %}
+<style>
+    div.submit{
+        width: 170px;
+        height: 170px;
+        padding: 5px;
+    }
+    div.submit:hover{
+        border: 1px solid silver;
+        border-radius: 10px;
+    }
+    .submit img{
+        width: 150px;
+        height: 150px;
+    }
+</style>
 {% end %}
 
 {% block menu %}
@@ -8,17 +23,42 @@
 {% end %}
 
 {% block content %}
-<div class="page-header">
+<div class="container center-block">
     <h1>Enigma Travel</h1>
-</div>
-
-<div class="container">
-    <div id="group" class="form-inline" >
-        {% raw xsrf_form_html() %}
-        <button id="submit" class="btn btn-default" >旅に出る</button>
+    <div >
+        <img src="/static/image/icon_large.png" />
+        <br/><br/>
+        <div>
+            <div id="message" class="message" style="max-width:300px; margin-right: auto; margin-left: auto;">
+                今回の旅行の予算を教えてね！
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div id="group">
+        <table style="margin-right: auto; margin-left: auto;">
+            <tr>
+                <td>
+                    <div class="submit" data-value="0">
+                        <img src="/static/image/budget_s.png">
+                    </div>
+                </td>
+                <td>
+                    <div class="col-md-2 submit" data-value="1">
+                        <img src="/static/image/budget_m.png">
+                    </div>
+                </td>
+                <td>
+                    <div class="col-md-2 submit" data-value="2">
+                        <img src="/static/image/budget_l.png">
+                    </div>
+                </td>
+            </tr>
+        </table>
         <br/>
         <div id="share" style="display:none">
-            <a id="url" href="">投票</a>
+            <a id="url" href="" class="btn btn-info" role="button">行きたい場所を相談</a>
+            {% raw xsrf_form_html() %}
         </div>
     </div>
 </div>

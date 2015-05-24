@@ -27,8 +27,7 @@ class GroupHandler(tornado.web.RequestHandler):
         elif _budget == 2:
             budget = 80000
 
-        _deadline = datetime.fromtimestamp(int(self.get_argument("deadline", "0"))//1000) + timedelta(minutes=3)
-        deadline = _deadline.strftime("%Y/%m/%d %H:%M:%S")
+        deadline = self.get_argument("deadline", "1111/11/11 11:11:11")
 
         _query = {
             "budget": budget,

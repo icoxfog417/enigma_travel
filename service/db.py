@@ -30,6 +30,10 @@ class Db:
 
         self.cur = self.conn.cursor()
 
-    def execute(self, sql):
-        self.cur.execute(sql)
-        return self.cur.fetchone()
+    def select(self, sql):
+      self.cur.execute(sql)
+      return self.cur.fetchone()
+
+    def update(self, sql):
+      self.cur.execute(sql)
+      self.conn.commit()

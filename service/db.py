@@ -18,6 +18,10 @@ class Db:
         port = config["port"])
       self.cur = self.conn.cursor()
 
-    def execute(self, sql):
+    def select(self, sql):
       self.cur.execute(sql)
       return self.cur.fetchone()
+
+    def update(self, sql):
+      self.cur.execute(sql)
+      self.conn.commit()

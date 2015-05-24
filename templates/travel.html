@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block style_block %}
+<style>
+    .vote{
+        width: 160px;
+    }
+</style>
 {% end %}
 
 {% block menu %}
@@ -8,19 +13,45 @@
 {% end %}
 
 {% block content %}
-<div class="container">
-    <h1>Training</h1>
-    <input id="deadline" type="hidden" value="{{ deadline }}">
+<div class="container center-block">
     <div>
-        <img id="travel" src="" data-travel_id=""/>
-        {% raw xsrf_form_html() %}
-        <button id="like" class="btn btn-default" >Like</button>
-        <button id="dislike" class="btn btn-default" >Dislike</button>
+        <div id="timer">
+            00:00:00
+        </div>
+        <input id="deadline" type="hidden" value="{{ deadline }}">
     </div>
+    <div style="width:100%">
+        <div style="width:400px; margin-left:auto; margin-right:auto">
+            <div style="width:300px;float:left">
+                <div class="message">
+                    好きな場所を教えてね！
+                </div>
+            </div>
+            <div style="float:right">
+                <img id="character" src="/static/image/icon_small.png" style="height:100px"/>
+            </div>
+            <br style="clear:both">
+        </div>
+    </div>
+    <div style="height:310px">
+        <img id="travel" src="" data-travel_id="" class="img-rounded" style="height: 300px"/>
+    </div>
+    <br/>
+    <div style="width:100%">
+        <div style="width:400px; margin:auto">
+            <button id="dislike" class="btn btn-default vote" style="float:left"><i class="fa fa-thumbs-down"></i></button>
+            <button id="like" class="btn btn-default vote"  style="float:right"><i class="fa fa-thumbs-o-up"></i></button>
+            <br style="clear:both"/>
+        </div>
+        {% raw xsrf_form_html() %}
+    </div>
+    <br/>
     <button id="decide" class="btn btn-primary" >Decide</button>
 </div>
 {% end %}
 
 {% block tail_script %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="/static/js/travel.js"></script>
 {% end %}

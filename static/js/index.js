@@ -11,7 +11,7 @@ $(function(){
     bindUrl = function(data){
         $("#share").show();
         $("#url").attr("href", data.url);
-        $("#message").text("今度はみんなが行きたい場所をおしえて？");
+        $("#message").text("これから飛ぶから、行きたい場所が見えたら教えてね。");
     }
     $(".submit").click(createUrl)
 })

@@ -36,6 +36,9 @@ $(function(){
     bindTravel = function(data){
         $("#travel").attr("src", data.image_url);
         $("#travel").data("travel_id", data.travel_id);
+        var messages = ["いい感じね", "私は、ここ好きよ", "うーん、どうかしら？", "たまにはいいかもね", "ちょっと休憩するわ", "好きな人は好きかもね"];
+        var index = Math.floor(Math.random() * (messages.length - 1));
+        $("#message").text(messages[index]);
     }
     train = function(isLike){
         var params = {

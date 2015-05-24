@@ -30,7 +30,7 @@ class UBICApi:
         """
         candidates = [Travel(
             "1",
-            "Sample Travel",
+            "Marin Travel",
             "http://www.jtb.co.jp/kokunai/pkg/tourdetail.aspx?tourcd=13KZ000751AA01000000&dept=TYO&brand=tourdom&SearchType=standard&TourConFlg=NX&TransType=1",
             "http://dom.jtb.co.jp/yado/photo2/LL/8/8715015/87150151000065600.jpg",
             10000

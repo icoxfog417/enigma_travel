@@ -9,10 +9,26 @@
 
 {% block content %}
 <div class="container">
-    <h1>Travel Result</h1>
+    <h3>Let's go travel to ...</h3>
     <div>
-        <a href="{{ result.url }}" target="_blank">{{ result.title }}</a><br/>
+        <a href="{{ result.url }}" target="_blank" style="font-size:40px">{{ result.title }}</a>
+        <br/>
         <img src="{{ result.image_url }}"/>
+    </div>
+    <br/><br/>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <div class="message" style="width:300px">
+                        気に入ってもらえたかな？<br/>いい思い出を作ってきてね！
+                    </div>
+                </td>
+                <td>
+                    <img src="{{ static_url('image/icon_large.png') }}" style="width:100px;"/>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
 {% end %}

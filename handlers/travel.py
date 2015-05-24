@@ -61,26 +61,31 @@ class TrainingHandler(tornado.web.RequestHandler):
             is_like = True
 
         db = Db()
-        trainings = db.select("select id, relevant, not_relevant from trainings where group_id = {0}".format(group_id))
+        training = db.select("select id, relevant, not_relevant from trainings where group_id = {0}".format(group_id))
 
-        if trainings is None :
+        if training is None :
             relevant = []
             not_relevant = []
         else :
-            relevant = trainings[1].split(",")
-            not_relevant = trainings[2].split(",")
+            if training[1] == "" :
+                relevant = []
+            else :
+                relevant = training[1].split(",")
+
+            if training[2] == "" :
+                not_relevant = []
+            else:
+                not_relevant = training[2].split(",")
 
         if is_like :
             relevant.append(travel_id)
-        else :
+        else:
             not_relevant.append(travel_id)
 
-        if trainings is None :
+        if training is None :
             db.update("insert into trainings (group_id, relevant, not_relevant) values({0}, '{1}', '{2}')".format(group_id, ",".join(relevant), ",".join(not_relevant)))
-        else :
-            db.update("update trainings set relevant = '{0}', not_relevant = '{1}' where id = {2}".format(",".join(relevant), ",".join(not_relevant), trainings[0]))
-
-        travel_json = json.loads(result[5])
+        else:
+            db.update("update trainings set relevant = '{0}', not_relevant = '{1}' where id = {2}".format(",".join(relevant), ",".join(not_relevant), training[0]))
 
         # DBへフィードバック結果を保管
 

@@ -17,7 +17,7 @@ class GroupHandler(tornado.web.RequestHandler):
         :return:
         """
         # 一意のグループIDを作成
-        group_id = str(uuid.uuid4())
+        group_id = uuid.uuid4().int
 
         # 旅行プランのフィルタ条件を作成
         _budget = int(self.get_argument("budget", "0"))
@@ -27,8 +27,7 @@ class GroupHandler(tornado.web.RequestHandler):
         elif _budget == 2:
             budget = 80000
 
-        _deadline = datetime.now() + timedelta(minutes=3)
-        deadline = _deadline.strftime("%Y/%m/%d %H:%M:%S")
+        deadline = self.get_argument("deadline", "1111/11/11 11:11:11")
 
         _query = {
             "budget": budget,

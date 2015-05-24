@@ -3,7 +3,8 @@ $(function(){
         var budget = $(this).data("value");
         $.post("/group", {
                 "_xsrf": G.getXsrf(),
-                "budget": budget
+                "budget": budget,
+                "deadline": moment().add(3, "m").format("YYYY/MM/DD HH:mm:ss")
             }
         ).done(bindUrl);
     }

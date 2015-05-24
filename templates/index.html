@@ -26,7 +26,7 @@
 <div class="container center-block">
     <h1>Enigma Travel</h1>
     <div >
-        <img src="/static/image/icon_large.png" />
+        <img src="{{ static_url('image/icon_large.png') }}" />
         <br/><br/>
         <div>
             <div id="message" class="message" style="max-width:300px; margin-right: auto; margin-left: auto;">
@@ -40,17 +40,17 @@
             <tr>
                 <td>
                     <div class="submit" data-value="0">
-                        <img src="/static/image/budget_s.png">
+                        <img src="{{ static_url('image/budget_s.png') }}"/>
                     </div>
                 </td>
                 <td>
                     <div class="col-md-2 submit" data-value="1">
-                        <img src="/static/image/budget_m.png">
+                        <img src="{{ static_url('image/budget_m.png') }}">
                     </div>
                 </td>
                 <td>
                     <div class="col-md-2 submit" data-value="2">
-                        <img src="/static/image/budget_l.png">
+                        <img src="{{ static_url('image/budget_l.png') }}">
                     </div>
                 </td>
             </tr>
@@ -65,5 +65,6 @@
 {% end %}
 
 {% block tail_script %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
 <script src="/static/js/index.js"></script>
 {% end %}

@@ -1,13 +1,25 @@
 var G_DEADLINE = Date.now();
+var G_TIMER = null;
+
+decide = function(){
+    var url = G.getCurrentUrl() + "/result" + location.search;
+    location.href = url;
+}
 
 showTime = function(){
-    var now = moment();
-    var duration = moment.duration(G_DEADLINE.diff(now));
     var zeropad = function(num){
         return ("0" + num).slice(-2);
     }
-    var timer = zeropad(duration.hours()) + ":" + zeropad(duration.minutes()) + ":" + zeropad(duration.seconds());
-    $("#timer").text(timer);
+    var now = moment();
+    var duration = moment.duration(G_DEADLINE.diff(now));
+
+    if(duration.asSeconds() < 0){
+        clearInterval(G_TIMER);
+        decide();
+    }else{
+        var timer = zeropad(duration.hours()) + ":" + zeropad(duration.minutes()) + ":" + zeropad(duration.seconds());
+        $("#timer").text(timer);
+    }
 }
 
 $(function(){
@@ -38,10 +50,6 @@ $(function(){
             });
         });
     }
-    decide = function(){
-        var url = G.getCurrentUrl() + "/result" + location.search;
-        location.href = url;
-    }
 
     $("#like").click(function(){
         train(true);
@@ -54,7 +62,7 @@ $(function(){
     })
 
     getTravel();
-    var timer = setInterval(function(){
+    G_TIMER = setInterval(function(){
         showTime();
     }, 1000);
 })

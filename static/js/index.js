@@ -4,7 +4,7 @@ $(function(){
         $.post("/group", {
                 "_xsrf": G.getXsrf(),
                 "budget": budget,
-                "deadline": moment().add(3, "m").format("YYYY/MM/DD HH:mm:ss")
+                "deadline": moment().add(1, "m").format("YYYY/MM/DD HH:mm:ss")
             }
         ).done(bindUrl);
     }

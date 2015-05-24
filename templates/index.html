@@ -3,8 +3,8 @@
 {% block style_block %}
 <style>
     div.submit{
-        width: 170px;
-        height: 170px;
+        width: 120px;
+        height: 120px;
         padding: 5px;
     }
     div.submit:hover{
@@ -12,8 +12,8 @@
         border-radius: 10px;
     }
     .submit img{
-        width: 150px;
-        height: 150px;
+        width: 110px;
+        height: 110px;
     }
 </style>
 {% end %}
@@ -25,8 +25,10 @@
 {% block content %}
 <div class="container center-block">
     <h1>Enigma Travel</h1>
-    <div >
-        <img src="{{ static_url('image/icon_large.png') }}" />
+    <div>
+        <div style="width:60%; margin:auto">
+            <img src="{{ static_url('image/icon_large.png') }}" class="img-responsive"/>
+        </div>
         <br/><br/>
         <div>
             <div id="message" class="message" style="max-width:300px; margin-right: auto; margin-left: auto;">
